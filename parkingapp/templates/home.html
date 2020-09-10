@@ -1,0 +1,9 @@
+{% block content %}
+    <h1 class="header">Don't Park Unhappy</h1>
+    <a href="{% url 'parkingapp:login' %}"><h2>Login</h2></a>
+    <h2>OR</h2>
+    <form action="{% url 'parkingapp:register' %}" method="get">
+      {% csrf_token %}
+      <input type="submit" value="Register">
+    </form>
+{% endblock content %}
