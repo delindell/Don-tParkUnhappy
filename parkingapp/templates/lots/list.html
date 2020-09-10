@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parking App</title>
+  </head>
+  <body>
+    <h1>Lots</h1>
+
+    <ol>
+    {% for lot in all_lots %}
+        <li>
+            {{ lot.name }}
+            {{lot.address}}
+            Hourly Rate ${{lot.hourly_rate}}
+        </li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>
