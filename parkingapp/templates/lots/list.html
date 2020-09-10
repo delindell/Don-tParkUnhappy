@@ -12,8 +12,9 @@
     {% for lot in all_lots %}
         <li>
             {{ lot.name }}
-            {{lot.address}}
+            {{ lot.address }}
             Hourly Rate ${{lot.hourly_rate}}
+            <a href="{% url 'parkingapp:lot_details' lot.id %}">View Spots</a>
         </li>
     {% endfor %}
     </ol>
