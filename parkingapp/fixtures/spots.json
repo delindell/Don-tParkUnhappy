@@ -1,0 +1,114 @@
+[
+  {
+      "model": "parkingapp.spot",
+      "pk": 1,
+      "fields": {
+          "number": 1,
+          "lot": 1
+      }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 2,
+    "fields": {
+        "number": 2,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 3,
+    "fields": {
+        "number": 3,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 4,
+    "fields": {
+        "number": 4,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 5,
+    "fields": {
+        "number": 5,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 6,
+    "fields": {
+        "number": 6,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 7,
+    "fields": {
+        "number": 7,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 8,
+    "fields": {
+        "number": 8,
+        "lot": 1
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 9,
+    "fields": {
+        "number": 1,
+        "lot": 2
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 10,
+    "fields": {
+        "number": 2,
+        "lot": 2
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 11,
+    "fields": {
+        "number": 3,
+        "lot": 2
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 12,
+    "fields": {
+        "number": 4,
+        "lot": 2
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 13,
+    "fields": {
+        "number": 5,
+        "lot": 2
+    }
+  },
+  {
+    "model": "parkingapp.spot",
+    "pk": 14,
+    "fields": {
+        "number": 6,
+        "lot": 2
+    }
+  }
+] 
