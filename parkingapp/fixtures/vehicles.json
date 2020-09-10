@@ -1,0 +1,24 @@
+[
+  {
+      "model": "parkingapp.vehicle",
+      "pk": 1,
+      "fields": {
+          "license_plate": "3483 HRK",
+          "make": "Kia",
+          "color": "Red",
+          "model": "Sorento",
+          "user": "2"
+      }
+  },
+  {
+    "model": "parkingapp.vehicle",
+    "pk": 2,
+    "fields": {
+        "license_plate": "34987 ERD",
+        "make": "Dodge",
+        "color": "Red",
+        "model": "Ram",
+        "user": 2
+    }
+  }
+] 

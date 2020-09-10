@@ -1,0 +1,24 @@
+[
+  {
+      "model": "parkingapp.lot",
+      "pk": 1,
+      "fields": {
+          "address": "123 Main St.",
+          "name": "Downtown Lot",
+          "open_time": 5,
+          "close_time": 22,
+          "hourly_rate": 10.00
+      }
+  },
+  {
+    "model": "parkingapp.lot",
+    "pk": 2,
+    "fields": {
+        "address": "456 West Branch Rd.",
+        "name": "Uptown Lot",
+        "open_time": 5,
+        "close_time": 20,
+        "hourly_rate": 7.00
+    }
+  }
+] 
