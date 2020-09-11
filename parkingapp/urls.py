@@ -10,5 +10,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('register/', register_form, name='register'),
     path('lots/', lot_list, name='lot_list'),
-    path('lots/<int:lot_id>/', lot_details, name='lot_details')
+    path('lots/<int:lot_id>/', lot_details, name='lot_details'),
+    path('lots/form', add_lot_form, name='add_lot_form')
 ]

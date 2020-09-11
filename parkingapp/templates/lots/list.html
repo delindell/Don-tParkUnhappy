@@ -7,7 +7,12 @@
   </head>
   <body>
     <h1>Lots</h1>
-
+    {% if user.is_superuser %}
+      <form action="{% url 'parkingapp:add_lot_form' %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Add Lot">
+      </form>
+    {% endif %}  
     <ol>
     {% for lot in all_lots %}
         <li>
