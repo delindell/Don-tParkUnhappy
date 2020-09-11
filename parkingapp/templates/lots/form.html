@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parking App</title>
+  </head>
+  <body>
+    <h1>Add New Lot</h1>
+    <form action="{% url 'parkingapp:add_lot_form' %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="name">Name: </label>
+          <input id="name" type="text" name="name">
+      </fieldset>
+      <fieldset>
+          <label for="address">Address: </label>
+          <input id="address" type="text" name="address">
+      </fieldset>
+      <fieldset>
+          <label for="open_time">Open Time: </label>
+          <input id="open_time" min=1 max=24 type="number" name="open_time">
+      </fieldset>
+      <fieldset>
+          <label for="close_time">Close Time: </label>
+          <input id="close_time" min=1 max=24 type="number" name="close_time">
+      </fieldset>
+      <fieldset>
+          <label for="hourly_rate">Hourly Rate: </label>
+          <input id="hourly_rate" type="hourly_rate" name="hourly_rate">
+      </fieldset>
+      <input type="submit" value="Add Lot" />
+    </form>
+  </body>
+</html>
