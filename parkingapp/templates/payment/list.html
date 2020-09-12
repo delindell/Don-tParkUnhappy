@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parking App</title>
+  </head>
+  <body>
+    <h1>Payment Types</h1>
+
+    {% if user.is_authenticated %}
+      <form action="{% url 'parkingapp:payment_form' user.id %}" method="get">
+          {% csrf_token %}
+          <input type="submit" value="Add Payment">
+      </form> 
+    {% endif %}
+    <ol>
+    {% for payment in payment_types %}
+        <li>
+            {{ payment.merchant_name }}
+            {{ payment.account_num }}
+            {{ payment.expiration_date }}
+            <button> Delete Payment </button>
+        </li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>
