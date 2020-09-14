@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parking App</title>
+  </head>
+  <body>
+    <h1>Add New Payment Type</h1>
+    <form action="{% url 'parkingapp:payment_form' user.id %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="merchant_name">Merchant Name: </label>
+          <input id="merchant_name" type="text" name="merchant_name" required>
+      </fieldset>
+      <fieldset>
+          <label for="account_num">Account Number: </label>
+          <input id="account_num" type="number" name="account_num" required>
+      </fieldset>
+      <fieldset>
+          <label for="expiration_date">Expiration Date: </label>
+          <input id="expiration_date" type="date" name="expiration_date" required>
+      </fieldset>
+      <input type="submit" value="Add Payment" />
+    </form>
+  </body>
+</html>
