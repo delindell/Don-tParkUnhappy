@@ -8,8 +8,11 @@
   <body>
     <h1>Account</h1>
       {% for user in auth_user %}
-        <p>{{ user.first_name }} {{ user.last_name }}</p>
-        <p>{{ user.email }}</p>
+        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+
+        <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
+        <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
       {% endfor %}
   </body>
 </html>
