@@ -20,6 +20,14 @@
             {{ lot.address }}
             Hourly Rate ${{lot.hourly_rate}}
             <a href="{% url 'parkingapp:lot_details' lot.id %}">View Spots</a>
+            {% if user.is_superuser %}
+              <form action="{% url 'parkingapp:lot_list' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="lot_id" value="{{ lot.id }}">
+                <input type="hidden" name="actual_method" value="DELETE">
+                <input type="submit" value="Delete Lot">
+              </form>
+            {% endif %}
         </li>
     {% endfor %}
     </ol>

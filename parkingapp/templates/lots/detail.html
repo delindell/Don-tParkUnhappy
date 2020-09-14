@@ -7,12 +7,10 @@
   </head>
   <body>
     <h1>{{ lot.name }}</h1>
-    <ol>
-    {% for spot in lot.spots %}
-        <li>
-            {{ spot.number }}
-        </li>
-    {% endfor %}
-    </ol>
+    <ul>
+      {% for spot in lot.spots %}
+        <li style="list-style-type: none;">Spot #: {{ spot.number }}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

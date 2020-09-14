@@ -4,7 +4,7 @@ from django.shortcuts import reverse
 class Spot(models.Model):
 
     number = models.IntegerField()
-    lot = models.ForeignKey("Lot", verbose_name=("lot"), on_delete=models.DO_NOTHING)
+    lot = models.ForeignKey("Lot", verbose_name=("lot"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("spot")
