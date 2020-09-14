@@ -13,16 +13,19 @@
           {% csrf_token %}
           <input type="submit" value="Add Payment">
       </form> 
+      {% for payment in payment_types %}
+        <div>
+          <p>{{ payment.merchant_name }}</p>
+          <p>{{ payment.account_num }}</p>
+          <p>{{ payment.expiration_date }}</p>
+          <form action="{% url 'parkingapp:payment_list' user.id  %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="payment_id" value="{{ payment.id }}">
+            <input type="hidden" name="actual_method" value="DELETE">
+            <input type="submit" value="Delete Payment">
+          </form>
+        </div>
+      {% endfor %}
     {% endif %}
-    <ol>
-    {% for payment in payment_types %}
-        <li>
-            {{ payment.merchant_name }}
-            {{ payment.account_num }}
-            {{ payment.expiration_date }}
-            <button> Delete Payment </button>
-        </li>
-    {% endfor %}
-    </ol>
   </body>
 </html>

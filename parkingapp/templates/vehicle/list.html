@@ -20,7 +20,12 @@
         <p>Model: {{ vehicle.model }}</p>
         <p>Color: {{ vehicle.color }}</p>
         <p>Plate Number: {{ vehicle.license_plate }}</p>
-        <button> Delete Vehicle </button>
+        <form action="{% url 'parkingapp:vehicle_list' user.id  %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+          <input type="hidden" name="actual_method" value="DELETE">
+          <input type="submit" value="Delete Vehicle">
+        </form>
       </div>
     {% endfor %}
   </body>

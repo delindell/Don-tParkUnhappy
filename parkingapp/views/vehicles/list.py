@@ -18,3 +18,17 @@ def vehicle_list(request, user_id):
         }
 
         return render(request, template, context)
+    
+    elif request.method == 'POST':
+
+        form_data = request.POST
+
+        if(
+            "actual_method" in form_data
+            and form_data["actual_method"] == 'DELETE'
+        ):
+          vehicle = Vehicle.objects.get(pk=int(form_data['vehicle_id']))
+          vehicle.delete()
+
+          return redirect(reverse('parkingapp:vehicle_list', args=[user_id]))
+

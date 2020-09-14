@@ -11,23 +11,23 @@
       {% csrf_token %}
       <fieldset>
           <label for="name">Name: </label>
-          <input id="name" type="text" name="name">
+          <input id="name" type="text" name="name" required>
       </fieldset>
       <fieldset>
           <label for="address">Address: </label>
-          <input id="address" type="text" name="address">
+          <input id="address" type="text" name="address" required>
       </fieldset>
       <fieldset>
           <label for="open_time">Open Time: </label>
-          <input id="open_time" min=1 max=24 type="number" name="open_time">
+          <input id="open_time" min=1 max=24 type="number" name="open_time" required>
       </fieldset>
       <fieldset>
           <label for="close_time">Close Time: </label>
-          <input id="close_time" min=1 max=24 type="number" name="close_time">
+          <input id="close_time" min=1 max=24 type="number" name="close_time" required>
       </fieldset>
       <fieldset>
           <label for="hourly_rate">Hourly Rate: </label>
-          <input id="hourly_rate" type="hourly_rate" name="hourly_rate">
+          <input id="hourly_rate" type="hourly_rate" name="hourly_rate" required>
       </fieldset>
       <input type="submit" value="Add Lot" />
     </form>

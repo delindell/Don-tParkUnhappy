@@ -25,4 +25,4 @@ def payment_form(request, user_id):
           user = user
         )
 
-        return redirect(reverse('parkingapp:lot_list'))
+        return redirect(reverse('parkingapp:payment_list', args=[user_id]))

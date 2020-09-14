@@ -11,15 +11,15 @@
       {% csrf_token %}
       <fieldset>
           <label for="merchant_name">Merchant Name: </label>
-          <input id="merchant_name" type="text" name="merchant_name">
+          <input id="merchant_name" type="text" name="merchant_name" required>
       </fieldset>
       <fieldset>
           <label for="account_num">Account Number: </label>
-          <input id="account_num" type="number" name="account_num">
+          <input id="account_num" type="number" name="account_num" required>
       </fieldset>
       <fieldset>
           <label for="expiration_date">Expiration Date: </label>
-          <input id="expiration_date" type="date" name="expiration_date">
+          <input id="expiration_date" type="date" name="expiration_date" required>
       </fieldset>
       <input type="submit" value="Add Payment" />
     </form>
