@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from parkingapp.models import Lot
+from parkingapp.models import Lot, Spot
 
 
 
@@ -24,5 +24,18 @@ def add_lot_form(request):
           close_time = form_data['close_time'],
           hourly_rate = form_data['hourly_rate']
         )
+
+        num_of_spots = int(form_data['number_of_spots'])
+
+        list_of_spots = [x for x in range(num_of_spots, 0, -1)]
+
+        x = 0
+
+        for spot in list_of_spots:
+            x += 1
+            new_spot = Spot.objects.create(
+              number = x,
+              lot_id = new_lot.id
+            )
 
         return redirect(reverse('parkingapp:lot_list'))
