@@ -8,3 +8,5 @@ from .lot.form import add_lot_form
 from .account.detail import account_details
 from .payment_types.list import payment_list
 from .payment_types.form import payment_form
+from .vehicles.form import vehicle_form
+from .vehicles.list import vehicle_list
