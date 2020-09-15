@@ -1,32 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>Your Vehicles</h1>
+{% extends 'shared/base.html' %}
 
-    {% if user.is_authenticated %}
-      <form action="{% url 'parkingapp:vehicle_form' user.id %}" method="get">
+{% load static %}
+
+{% block content %}
+  <h1>Your Vehicles</h1>
+  {% if user.is_authenticated %}
+    <form action="{% url 'parkingapp:vehicle_form' user.id %}" method="get">
+      {% csrf_token %}
+      <input type="submit" value="Add Vehicle">
+    </form> 
+  {% endif %}
+  {% for vehicle in vehicles %}
+    <div class="vehicle-container">
+      <p>Make: {{ vehicle.make }}</p>
+      <p>Model: {{ vehicle.model }}</p>
+      <p>Color: {{ vehicle.color }}</p>
+      <p>Plate Number: {{ vehicle.license_plate }}</p>
+      <form action="{% url 'parkingapp:vehicle_list' user.id  %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="Add Vehicle">
-      </form> 
-    {% endif %}
-    {% for vehicle in vehicles %}
-      <div class="vehicle-container">
-        <p>Make: {{ vehicle.make }}</p>
-        <p>Model: {{ vehicle.model }}</p>
-        <p>Color: {{ vehicle.color }}</p>
-        <p>Plate Number: {{ vehicle.license_plate }}</p>
-        <form action="{% url 'parkingapp:vehicle_list' user.id  %}" method="post">
-          {% csrf_token %}
-          <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
-          <input type="hidden" name="actual_method" value="DELETE">
-          <input type="submit" value="Delete Vehicle">
-        </form>
-      </div>
-    {% endfor %}
-  </body>
-</html>
+        <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+        <input type="hidden" name="actual_method" value="DELETE">
+        <input type="submit" value="Delete Vehicle">
+      </form>
+    </div>
+  {% endfor %}
+{% endblock %}

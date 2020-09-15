@@ -1,35 +1,40 @@
+{% extends 'shared/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>Lots</h1>
-    {% if user.is_superuser %}
-      <form action="{% url 'parkingapp:add_lot_form' %}" method="get">
-        {% csrf_token %}
-        <input type="submit" value="Add Lot">
-      </form>
-    {% endif %}  
-    <ol>
-    {% for lot in all_lots %}
-        <li>
-            {{ lot.name }}
-            {{ lot.address }}
-            Hourly Rate ${{lot.hourly_rate}}
-            <a href="{% url 'parkingapp:lot_details' lot.id %}">View Spots</a>
-            {% if user.is_superuser %}
-              <form action="{% url 'parkingapp:lot_list' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="lot_id" value="{{ lot.id }}">
-                <input type="hidden" name="actual_method" value="DELETE">
-                <input type="submit" value="Delete Lot">
-              </form>
-            {% endif %}
-        </li>
-    {% endfor %}
-    </ol>
-  </body>
-</html>
+
+{% block content %}
+
+  {% if user.is_superuser %}
+    <h1>Welcome Admin User!</h1>
+  {% endif %}
+
+  {% if not user.is_superuser %}
+    <h1>Welcome {{ user.first_name }} {{ user.last_name }}!</h1>
+  {% endif %}
+
+  <h1>Our Lots</h1>
+  {% if user.is_superuser %}
+    <form action="{% url 'parkingapp:add_lot_form' %}" method="get">
+      {% csrf_token %}
+      <input type="submit" value="Add Lot">
+    </form>
+  {% endif %}  
+  <ol>
+  {% for lot in all_lots %}
+    <li>
+      {{ lot.name }}
+      {{ lot.address }}
+      Hourly Rate ${{ lot.hourly_rate }}
+      <a href="{% url 'parkingapp:lot_details' lot.id %}">View Spots</a>
+      {% if user.is_superuser %}
+        <form action="{% url 'parkingapp:lot_list' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="lot_id" value="{{ lot.id }}">
+          <input type="hidden" name="actual_method" value="DELETE">
+          <input type="submit" value="Delete Lot">
+        </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ol>
+{% endblock content %}

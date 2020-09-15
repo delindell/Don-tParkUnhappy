@@ -17,10 +17,17 @@ def payment_form(request, user_id):
 
         user = User.objects.get(pk=user_id)
 
+        get_cc_last4 = form_data['account_num'].split()[-1]
+      
+        cc_last4 = '{} {}'.format('xxxxxxxxxxxx', get_cc_last4)
+
+        expiry = '{}/{}'.format(form_data['expireMM'], form_data['expireYY'])
+
         new_payment = PaymentType.objects.create(
           merchant_name = form_data['merchant_name'],
           account_num = form_data['account_num'],
-          expiration_date = form_data['expiration_date'],
+          account_last4 = cc_last4,
+          expiration_date = expiry,
           created_at = date.today(),
           user = user
         )

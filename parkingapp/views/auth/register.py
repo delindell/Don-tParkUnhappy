@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 
 def register_form(request):
@@ -20,5 +21,10 @@ def register_form(request):
             last_name = form_data['last_name']
         )
 
-        return redirect(reverse('parkingapp:home'))
+        authenticated_user = authenticate(username=form_data['username'], password=form_data['password'])
+
+        if authenticated_user is not None:
+            login(request, authenticated_user)
+
+        return redirect(reverse('parkingapp:lot_list'))
 

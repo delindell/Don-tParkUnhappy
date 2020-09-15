@@ -1,39 +1,35 @@
+{% extends 'shared/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>Add New Lot</h1>
-    <form action="{% url 'parkingapp:add_lot_form' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-          <label for="name">Name: </label>
-          <input id="name" type="text" name="name" required>
-      </fieldset>
-      <fieldset>
-          <label for="address">Address: </label>
-          <input id="address" type="text" name="address" required>
-      </fieldset>
-      <fieldset>
-          <label for="open_time">Open Time: </label>
-          <input id="open_time" min=1 max=24 type="number" name="open_time" required>
-      </fieldset>
-      <fieldset>
-          <label for="close_time">Close Time: </label>
-          <input id="close_time" min=1 max=24 type="number" name="close_time" required>
-      </fieldset>
-      <fieldset>
-          <label for="hourly_rate">Hourly Rate: </label>
-          <input id="hourly_rate" type="hourly_rate" name="hourly_rate" required>
-      </fieldset>
-      <fieldset>
-          <label for="number_of_spots">Number of Spots: </label>
-          <input id="number_of_spots" min=1 type="number" name="number_of_spots" required>
-      </fieldset>
-      <input type="submit" value="Add Lot" />
-    </form>
-  </body>
-</html>
+
+{% block content %}
+  <h1>Add New Lot</h1>
+  <form action="{% url 'parkingapp:add_lot_form' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <label for="name">Name: </label>
+      <input id="name" type="text" name="name" required>
+    </fieldset>
+    <fieldset>
+      <label for="address">Address: </label>
+      <input id="address" type="text" name="address" required>
+    </fieldset>
+    <fieldset>
+      <label for="open_time">Open Time: </label>
+      <input id="open_time" min=1 max=24 type="number" name="open_time" required>
+    </fieldset>
+    <fieldset>
+      <label for="close_time">Close Time: </label>
+      <input id="close_time" min=1 max=24 type="number" name="close_time" required>
+    </fieldset>
+    <fieldset>
+      <label for="hourly_rate">Hourly Rate: </label>
+      <input id="hourly_rate" type="hourly_rate" name="hourly_rate" required>
+    </fieldset>
+    <fieldset>
+      <label for="number_of_spots">Number of Spots: </label>
+      <input id="number_of_spots" min=1 type="number" name="number_of_spots" required>
+    </fieldset>
+    <input type="submit" value="Add Lot" />
+  </form>
+{% endblock %}

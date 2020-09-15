@@ -5,7 +5,7 @@ from .views import *
 
 app_name = 'parkingapp'
 urlpatterns = [
-    path('home/', home, name='home'),
+    path('', home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_user, name='logout'),
     path('register/', register_form, name='register'),
@@ -14,7 +14,8 @@ urlpatterns = [
     path('lots/form/', add_lot_form, name='add_lot_form'),
     path('account/<int:user_id>/', account_details, name='account_details'),
     path('paymenttypes/<int:user_id>/', payment_list, name='payment_list'),
-    path('paymenttypes/<int:user_id>/form/', payment_form, name='payment_form'),
+    path('paymenttypes/form/<int:user_id>/', payment_form, name='payment_form'),
     path('vehicles/<int:user_id>/', vehicle_list, name='vehicle_list'),
-    path('vehicles/<int:user_id>/form/', vehicle_form, name='vehicle_form')
+    path('vehicles/form/<int:user_id>/', vehicle_form, name='vehicle_form'),
+    path('reservations', reservation_list, name='reservation_list')
 ]

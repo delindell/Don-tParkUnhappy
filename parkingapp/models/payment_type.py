@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 class PaymentType(models.Model):
 
     merchant_name = models.CharField(max_length=50)
-    account_num = models.IntegerField()
-    expiration_date = models.DateField(auto_now_add=False)
+    account_num = models.CharField(max_length=19)
+    account_last4 = models.CharField(max_length=20)
+    expiration_date = models.CharField(max_length=5)
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 

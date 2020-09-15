@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Don't Park Unhappy</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <a href="/" class="nav__logo"></a>
+      <ul class="nav__links">
+        <li class="nav__link"><a href="{% url 'parkingapp:lot_list' %}">Parking Lots</a></li>
+        {% if not user.is_superuser %}
+          <li class="nav__link"><a href="{% url 'parkingapp:account_details' user.id %}">Account</a></li>
+        {% endif %}
+        {% if user.is_superuser %}
+          <li class="nav__link"><a href="{% url 'parkingapp:reservation_list' %}">Reservations</a></li>
+        {% endif %}    
+        {% if not user.is_authenticated %}
+          <li class="nav__link--login"><a href="{% url 'parkingapp:login' %}">Login</a> 
+        {% else %}
+          <li class="nav__link nav__link--logout"><a href="{% url 'parkingapp:logout' %}">Logout</a></li>    
+        {% endif %}
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock scripts %}
+  </body>
+</html>

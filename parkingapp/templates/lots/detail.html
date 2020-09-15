@@ -1,16 +1,12 @@
+{% extends 'shared/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>{{ lot.name }}</h1>
-    <ul>
-      {% for spot in lot.spots %}
-        <li style="list-style-type: none;">Spot #: {{ spot.number }}</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+
+{% block content %}
+  <h1>{{ lot.name }}</h1>
+  <ul>
+    {% for spot in lot.spots %}
+      <li style="list-style-type: none;">Spot #: {{ spot.number }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

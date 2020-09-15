@@ -1,27 +1,53 @@
+{% extends 'shared/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>Add New Payment Type</h1>
-    <form action="{% url 'parkingapp:payment_form' user.id %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-          <label for="merchant_name">Merchant Name: </label>
-          <input id="merchant_name" type="text" name="merchant_name" required>
-      </fieldset>
-      <fieldset>
-          <label for="account_num">Account Number: </label>
-          <input id="account_num" type="number" name="account_num" required>
-      </fieldset>
-      <fieldset>
-          <label for="expiration_date">Expiration Date: </label>
-          <input id="expiration_date" type="date" name="expiration_date" required>
-      </fieldset>
-      <input type="submit" value="Add Payment" />
-    </form>
-  </body>
-</html>
+
+{% block content %}
+  <h1>Add New Payment Type</h1>
+  <form action="{% url 'parkingapp:payment_form' user.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <label for="merchant_name">Credit Card Type: </label>
+      <select name="merchant_name" id="merchant_name">
+        <option value=""></option>
+        <option value="MasterCard">MasterCard</option>
+        <option value="Visa">Visa</option>
+        <option value="AMEX">AMEX</option>
+        <option value="Discover">Discover</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label for="account_num">Credit Card Number (include spaces): </label>
+      <input id="account_num" name="account_num" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+    </fieldset>
+    <fieldset>
+      <label for="expiration_date">Card Expiration: </label>
+      <select name='expireMM' id='expireMM'>
+          <option value=''>Month</option>
+          <option value='01'>January</option>
+          <option value='02'>February</option>
+          <option value='03'>March</option>
+          <option value='04'>April</option>
+          <option value='05'>May</option>
+          <option value='06'>June</option>
+          <option value='07'>July</option>
+          <option value='08'>August</option>
+          <option value='09'>September</option>
+          <option value='10'>October</option>
+          <option value='11'>November</option>
+          <option value='12'>December</option>
+      </select> 
+      <select name='expireYY' id='expireYY'>
+          <option value=''>Year</option>
+          <option value='20'>2020</option>
+          <option value='21'>2021</option>
+          <option value='22'>2022</option>
+          <option value='23'>2023</option>
+          <option value='24'>2024</option>
+          <option value='25'>2025</option>
+      </select> 
+      <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
+    </fieldset>
+    <input type="submit" value="Add Payment" />
+  </form>
+{% endblock %}
