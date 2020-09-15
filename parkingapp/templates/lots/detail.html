@@ -4,9 +4,32 @@
 
 {% block content %}
   <h1>{{ lot.name }}</h1>
-  <ul>
+  <div>
     {% for spot in lot.spots %}
-      <li style="list-style-type: none;">Spot #: {{ spot.number }}</li>
+      <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
+        {% csrf_token %}
+        <p style="list-style-type: none;">Spot #: {{ spot.number }}</p>
+        <select id="payment" type="text" name="payment">
+          <option value="">Select Payment</option>
+          {% for payment in payments %}
+            <option value="{{ payment.id }}">{{ payment.merchant_name }} {{ payment.expiration_date }}</option>
+          {% endfor %}
+        </select>
+        <select id="vehicle" type="text" name="vehicle">
+          <option value="">Select vehicle</option>
+          {% for vehicle in vehicles %}
+            <option value="{{ vehicle.id }}">{{ vehicle.make }} {{ vehicle.model }}</option>
+          {% endfor %}
+        </select>
+        <select name="num_of_hours" id="num_of_hours">
+          <option value="">Hours to Reserve</option>
+          <option value="1">1 Hour</option>
+          <option value="3">3 Hours</option>
+          <option value="5">5 Hours</option>
+        </select>
+        <input type="hidden" name="spot" value="{{ spot.id }}">
+        <input type="submit" value="Reserve">
+      </form>
     {% endfor %}
-  </ul>
+  </div>
 {% endblock %}
