@@ -1,18 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Parking App</title>
-  </head>
-  <body>
-    <h1>Account</h1>
-      {% for user in auth_user %}
-        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-        <p>Email: {{ user.email }}</p>
+{% extends 'shared/base.html' %}
 
-        <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
-        <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
-      {% endfor %}
-  </body>
-</html>
+{% load static %}
+
+{% block content %}
+  <h1>Account</h1>
+  {% for user in auth_user %}
+    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
+    <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
+  {% endfor %}
+{% endblock %}
