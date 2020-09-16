@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta
+from pytz import timezone
+import pytz
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -16,12 +18,15 @@ def lot_details(request, lot_id, user_id):
 
       vehicles = Vehicle.objects.filter(user_id=user_id)
 
+      reservations = SpotReservation.objects.filter(user_id=user_id)
+
       template = 'lots/detail.html'
 
       context = {
         'lot': lot,
         'payments': payments,
-        'vehicles': vehicles
+        'vehicles': vehicles,
+        'reservations': reservations
       }
 
       return render(request, template, context)
@@ -40,8 +45,13 @@ def lot_details(request, lot_id, user_id):
 
         hours = int(form_data['num_of_hours'])
         current_time = datetime.now()
+        central = pytz.timezone('US/Central')
+        local_time = central.localize(current_time)
+        print(local_time)
         hours_added = timedelta(hours=hours)
-        exp_time = current_time + hours_added
+        exp_time = local_time + hours_added
+
+        """Calculating total cost of reservation based off hours reserved"""
 
         cost = lot.hourly_rate * hours
 
@@ -57,6 +67,6 @@ def lot_details(request, lot_id, user_id):
           vehicle_id = form_data['vehicle']
         )
 
-        return redirect(reverse('parkingapp:lot_list'))
+        return redirect(reverse('parkingapp:reservation_confirmation', args=[new_reservation.id]))
 
 

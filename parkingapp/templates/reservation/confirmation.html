@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <h1>Thanks For Using Don't Park Unhappy</h1>
+
+  <h3>Confirmation Details</h3>
+
+  <p>Total Cost ${{ reservation.total_cost }}</p>
+  <p>Your reservation will expire at: {{ expire_time }}</p>
+{% endblock %}
