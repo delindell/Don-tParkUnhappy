@@ -40,7 +40,8 @@ def lot_details(request, lot_id, user_id):
 
         lot = Lot.objects.get(pk=lot_id)
 
-        """Getting number of hours reserved off of the form
+        """
+        Getting number of hours reserved off of the form
         converting into an int, then getting current time and 
         adding the number of hours reserved to get the expiration
         time for the reservation

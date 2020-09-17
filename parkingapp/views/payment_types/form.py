@@ -17,6 +17,10 @@ def payment_form(request, user_id):
 
         user = User.objects.get(pk=user_id)
 
+        """Here we are formating the actual CC number to just 
+        show the last 4 digits on the template, whilst still storing
+        the actual number in the DB"""
+
         get_cc_last4 = form_data['account_num'].split()[-1]
       
         cc_last4 = '{} {}'.format('xxxxxxxxxxxx', get_cc_last4)
