@@ -1,13 +1,13 @@
 {% extends 'shared/base.html' %}
 
-{% load static %}
-
 {% block content %}
-  <h1>Account</h1>
-  {% for user in auth_user %}
-    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
-    <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
-  {% endfor %}
+  <div class="account-containter" style="text-align: center;">
+    <h1>Account</h1>
+    {% for user in auth_user %}
+      <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
+      <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
+    {% endfor %}
+  </div>
 {% endblock %}

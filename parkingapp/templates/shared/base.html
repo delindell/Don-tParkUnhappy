@@ -5,7 +5,9 @@
   <head>
     <meta charset="utf-8">
     <title>Don't Park Unhappy</title>
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    {% block css %}
+      <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" />
+    {% endblock css %}
   </head>
 
   <body>

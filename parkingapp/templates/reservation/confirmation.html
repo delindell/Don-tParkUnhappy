@@ -3,10 +3,13 @@
 {% load static %}
 
 {% block content %}
-  <h1>Thanks For Using Don't Park Unhappy</h1>
+<div class="confirmation-container" style="text-align: center;">
+    <h1>Thanks For Using Don't Park Unhappy!</h1>
 
-  <h3>Confirmation Details</h3>
+    <h3>Confirmation Details</h3>
 
-  <p>Total Cost ${{ reservation.total_cost }}</p>
-  <p>Your reservation will expire at: {{ expire_time }}</p>
+    <p>Total Cost ${{ reservation.total_cost }}</p>
+    <p>Your reservation started {{ reservation.created_at }}</p>
+    <p>Your reservation will expire {{ expire_time }}</p>
+  </div>
 {% endblock %}

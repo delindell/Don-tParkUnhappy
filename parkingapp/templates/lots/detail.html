@@ -6,7 +6,7 @@
   <h1>{{ lot.name }}</h1>
   <div>
     {% for spot in lot.spots %}
-      {% if spot.id not in reservations %}
+      {% if not spot.is_reserved %}
         <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
           {% csrf_token %}
           <p style="list-style-type: none;">Spot #: {{ spot.number }}</p>

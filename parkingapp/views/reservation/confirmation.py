@@ -8,13 +8,13 @@ def reservation_confirmation(request, reservation_id):
 
         reservation = SpotReservation.objects.get(pk=reservation_id)
 
-        formated_exp_time = reservation.res_end_time.ctime()
+        expire_time = reservation.res_end_time
 
         template = 'reservation/confirmation.html'
 
         context = {
           'reservation': reservation,
-          'expire_time': formated_exp_time
+          'expire_time': expire_time
         }
         
         return render(request, template, context)

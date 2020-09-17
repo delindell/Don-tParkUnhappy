@@ -18,5 +18,5 @@ urlpatterns = [
     path('vehicles/<int:user_id>/', vehicle_list, name='vehicle_list'),
     path('vehicles/form/<int:user_id>/', vehicle_form, name='vehicle_form'),
     path('reservations', reservation_list, name='reservation_list'),
-    path('confirmation/<int:reservation_id>', reservation_confirmation, name='reservation_confirmation')
+    path('confirmation/<int:reservation_id>', reservation_confirmation, name='reservation_confirmation'),
 ]

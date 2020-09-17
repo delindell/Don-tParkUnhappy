@@ -1,0 +1,53 @@
+/* Nav */
+.nav {
+  display: flex;
+}
+
+.nav__logo {
+  width: 125px;
+  height: 125px;
+  margin: 1% 0 1% 6%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.nav__links {
+  flex-grow: 3;
+  justify-content: right;
+  align-items: center;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+.nav__links a {
+  text-decoration: none;
+}
+.nav__links a:hover {
+  border-bottom: .1em solid blue;
+  text-decoration: none;
+}
+.nav__links a:visited {
+  color: inherit;
+}
+
+.nav__link {
+  padding-right: 3%;
+  font-size: large;
+}
+
+/* payments */
+
+.payments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.payment {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid gray;
+  margin: 1em;
+  padding: 1.5em;
+}
