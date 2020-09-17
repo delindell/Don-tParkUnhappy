@@ -9,7 +9,7 @@ class SpotReservation(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     res_end_time = models.DateTimeField(auto_now_add=False)
-    total_cost = models.FloatField()
+    total_cost = models.IntegerField()
     spot = models.ForeignKey(Spot, on_delete=models.CASCADE)
     payment_type = models.ForeignKey(PaymentType, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)

@@ -11,3 +11,4 @@ from .payment_types.form import payment_form
 from .vehicles.form import vehicle_form
 from .vehicles.list import vehicle_list
 from .reservation.list import reservation_list
+from .reservation.confirmation import reservation_confirmation

@@ -1,20 +1,25 @@
 {% extends 'shared/base.html' %}
-
 {% load static %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+{% endblock %}
+
+
 {% block content %}
-  <h1>Payment Types</h1> 
+  <h1  style="text-align: center;">{{user.first_name}}'s Payment Types</h1> 
   {% if user.is_authenticated %}
-    <form action="{% url 'parkingapp:payment_form' user.id %}" method="get">
+    <form style="text-align: center;" action="{% url 'parkingapp:payment_form' user.id %}" method="get">
       {% csrf_token %}
-      <input type="submit" value="Add Payment">
+      <input class="add-payment" type="submit" value="Add Payment">
     </form> 
+    <div class="payments">
     {% for payment in payment_types %}
-      <div>
+      <div class="payment">
         {% if payment.account_num %}
-          <p>Card Type: {{ payment.merchant_name }}</p>
-          <p>Card Number: {{ payment.account_last4 }}</p>
-          <p>Card Expiration: {{ payment.expiration_date }}</p>
+          <p><strong>Card Type:</strong> {{ payment.merchant_name }}</p>
+          <p><strong>Card Number:</strong> {{ payment.account_last4 }}</p>
+          <p><strong>Card Expiration:</strong> {{ payment.expiration_date }}</p>
         {% endif %}
         <form action="{% url 'parkingapp:payment_list' user.id  %}" method="post">
           {% csrf_token %}
@@ -23,6 +28,8 @@
           <input type="submit" value="Delete Payment">
         </form>
       </div>
-    {% endfor %}
-  {% endif %}
+      {% endfor %}
+      </div>
+    {% endif %}
 {% endblock %}
+<strong></strong>

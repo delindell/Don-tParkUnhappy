@@ -35,6 +35,7 @@ def add_lot_form(request):
             x += 1
             new_spot = Spot.objects.create(
               number = x,
+              is_reserved = False,
               lot_id = new_lot.id
             )
 
