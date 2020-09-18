@@ -4,6 +4,15 @@ from parkingapp.models import SpotReservation, Spot
 
 def check_reservation():
 
+    """
+    When called this helper function gets all the spots that are
+    currently reserved, then gets all the spot reservations. Matches
+    the spot with the reservation, then compares if the current time 
+    is greater than when the reservation is scheduled to end. If this
+    is true it will change the is_reserved field on the spot object to
+    False
+    """
+
     all_spots = Spot.objects.all()
 
     reserved_spots = all_spots.filter(is_reserved=True)

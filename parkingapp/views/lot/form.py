@@ -25,6 +25,10 @@ def add_lot_form(request):
           hourly_rate = form_data['hourly_rate']
         )
 
+        """
+        Here we are getting the number of spots in the new lot
+        off of the form """
+
         num_of_spots = int(form_data['number_of_spots'])
 
         list_of_spots = [x for x in range(num_of_spots, 0, -1)]
