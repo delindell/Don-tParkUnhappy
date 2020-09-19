@@ -25,7 +25,9 @@
       {{ lot.name }}
       {{ lot.address }}
       Hourly Rate ${{ lot.hourly_rate }}
-      <a href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
+      {% if not user.is_superuser %}
+        <a href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
+      {% endif %}
       {% if user.is_superuser %}
         <form action="{% url 'parkingapp:lot_list' %}" method="post">
           {% csrf_token %}

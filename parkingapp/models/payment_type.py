@@ -1,8 +1,9 @@
 from django.db import models
 from django.shortcuts import reverse
+from safedelete.models import SOFT_DELETE, SafeDeleteModel
 from django.contrib.auth.models import User
 
-class PaymentType(models.Model):
+class PaymentType(SafeDeleteModel):
 
     merchant_name = models.CharField(max_length=50)
     account_num = models.CharField(max_length=19)
@@ -10,6 +11,7 @@ class PaymentType(models.Model):
     expiration_date = models.CharField(max_length=5)
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    _safedelete_policy = SOFT_DELETE
 
 class Meta:
     verbose_name = ("payment_type")

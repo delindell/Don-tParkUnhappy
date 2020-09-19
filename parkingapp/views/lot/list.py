@@ -3,7 +3,7 @@ from django.utils.timezone import get_current_timezone
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required
-from parkingapp.models import Lot, SpotReservation
+from parkingapp.models import Lot
 
 @login_required
 def lot_list(request):

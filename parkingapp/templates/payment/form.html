@@ -1,10 +1,11 @@
 {% extends 'shared/base.html' %}
+{% load bootstrap4 %}
 
 {% load static %}
 
 {% block content %}
   <h1>Add New Payment Type</h1>
-  <form action="{% url 'parkingapp:payment_form' user.id %}" method="post">
+  <form action="{% url 'parkingapp:payment_form' user.id %}" method="post" class="form">
     {% csrf_token %}
     <fieldset>
       <label for="merchant_name">Credit Card Type: </label>
