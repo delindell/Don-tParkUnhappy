@@ -1,0 +1,32 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <h1>Our Reservations</h1>
+  <h2>Active Reservations</h2>
+  <ol>
+  {% for reservation in all_reservations %}
+    {% for spot in all_spots %}
+      {% if reservation.spot_id == spot.id %}
+        {% if spot.is_reserved and current_time < reservation.res_end_time %}
+          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }} {{ reservation.vehicle.license_plate }}</li>
+        {% endif %}
+      {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ol>
+  <h2>Expired Reservations</h2>
+    <ol>
+  {% for reservation in all_reservations %}
+    {% for spot in all_spots %}
+      {% if reservation.spot_id == spot.id %}
+        {% if not spot.is_reserved %}
+          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }}</li>
+        {% endif %}
+      {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ol>
+{% endblock content %}

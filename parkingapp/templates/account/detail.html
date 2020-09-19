@@ -6,8 +6,9 @@
     {% for user in auth_user %}
       <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
-      <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Your Vehicles</a>
-      <a href="{% url 'parkingapp:payment_list' user.id %}">View Your Payment Types</a>
+      <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Vehicles</a>
+      <a href="{% url 'parkingapp:payment_list' user.id %}">View Payments</a>
+      <a href="{% url 'parkingapp:edit_account_details' user.id %}">Edit Profile</a>
     {% endfor %}
   </div>
 {% endblock %}

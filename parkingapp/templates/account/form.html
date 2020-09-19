@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <h1>Edit Profile</h1>
+  <form action="{% url 'parkingapp:edit_account_details' user.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <label for="first_name">First Name: </label>
+      <input id="first_name" type="text" name="first_name" value="{{ user.first_name }}" required>
+    </fieldset>
+    <fieldset>
+      <label for="last_name">Last Name: </label>
+      <input id="last_name" type="text" name="last_name" value="{{ user.last_name }}" required>
+    </fieldset>
+    <fieldset>
+      <label for="email">Email: </label>
+      <input id="email" type="email" name="email" value="{{ user.email }}" required>
+    </fieldset>
+    <input type="hidden" name="actual_method" value="PUT">
+    <input type="submit" value="Save Profile" />
+  </form>
+{% endblock %}

@@ -1,14 +1,16 @@
 from django.db import models
 from django.shortcuts import reverse
+from safedelete.models import SOFT_DELETE, SafeDeleteModel
 from django.contrib.auth.models import User
 
-class Vehicle(models.Model):
+class Vehicle(SafeDeleteModel):
 
     license_plate = models.CharField(max_length=50)
     make = models.CharField(max_length=50)
     color = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    _safedelete_policy = SOFT_DELETE
 
 class Meta:
     verbose_name = ("vehicle")
