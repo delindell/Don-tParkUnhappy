@@ -5,8 +5,6 @@ class Lot(models.Model):
     
     address = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    open_time = models.IntegerField()
-    close_time = models.IntegerField()
     hourly_rate = models.IntegerField()
 
     class Meta:

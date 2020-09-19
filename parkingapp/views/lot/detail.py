@@ -38,6 +38,18 @@ def lot_details(request, lot_id, user_id):
 
         form_data = request.POST
 
+        if(
+          'actual_method' in form_data
+          and form_data['actual_method'] == 'DELETE'
+        ):
+
+            spot = Spot.objects.get(pk=int(form_data['spot_id']))
+            spot.delete()
+
+            return redirect(reverse('parkingapp:lot_details', args=[lot_id, user_id]))
+
+          
+
         lot = Lot.objects.get(pk=lot_id)
 
         """
