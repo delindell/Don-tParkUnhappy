@@ -1,8 +1,22 @@
+{% load static %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 {% block content%}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+  <div class="login-container" style="text-align: center;">
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {%buttons%}
+      <button class="btn btn-primary" type="submit">Login</button>
+      {%endbuttons%}
+    </form>
+  </div>
+
 {% endblock content %}

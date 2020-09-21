@@ -5,6 +5,7 @@ from .auth.register import register_form
 from .lot.list import lot_list
 from .lot.detail import lot_details
 from .lot.form import add_lot_form
+from .lot.update_form import lot_update_form
 from .account.detail import account_details
 from .account.form import edit_account_details
 from .payment_types.list import payment_list

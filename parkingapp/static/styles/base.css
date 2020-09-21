@@ -4,6 +4,15 @@
 }
 
 .nav__logo {
+  flex-grow: 1;
+  width: 125px;
+  height: 125px;
+  margin: 1% 0 1% 6%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.nav__logo {
   width: 125px;
   height: 125px;
   margin: 1% 0 1% 6%;
@@ -50,4 +59,26 @@
   border: 1px solid gray;
   margin: 1em;
   padding: 1.5em;
+}
+
+/* lots */
+
+.lots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.lot {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid gray;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+.lot-button a {
+  text-decoration: none;
+  margin: 1%;
 }

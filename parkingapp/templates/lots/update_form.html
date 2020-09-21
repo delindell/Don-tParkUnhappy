@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <h1>Update Lot</h1>
+  <form action="{% url 'parkingapp:lot_update_form' lot.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <label for="name">Name: </label>
+      <input id="name" type="text" name="name" value="{{ lot.name }}" required>
+    </fieldset>
+    <fieldset>
+      <label for="address">Address: </label>
+      <input id="address" type="text" name="address" value="{{ lot.address }}" required>
+    </fieldset>
+    <fieldset>
+      <label for="hourly_rate">Hourly Rate: </label>
+      <input id="hourly_rate" type="hourly_rate" name="hourly_rate" value="{{ lot.hourly_rate }}" required>
+    </fieldset>
+    <input type="hidden" name="actual_method" value="PUT">
+    <input type="submit" value="Update Lot" />
+  </form>
+{% endblock %}

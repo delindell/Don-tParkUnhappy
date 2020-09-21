@@ -5,6 +5,13 @@
 {% block content %}
   <h1>{{ lot.name }}</h1>
   <div>
+    {% if user.is_superuser %}
+      <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="PUT">
+        <input type="submit" value="Add Spot">
+      </form>
+    {% endif %}
   {% if not user.is_superuser %}
     {% for spot in lot.spots %}
       {% if not spot.is_reserved %}

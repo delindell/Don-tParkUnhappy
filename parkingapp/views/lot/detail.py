@@ -47,9 +47,29 @@ def lot_details(request, lot_id, user_id):
             spot.delete()
 
             return redirect(reverse('parkingapp:lot_details', args=[lot_id, user_id]))
+            
+        elif(
+          'actual_method' in form_data
+          and form_data['actual_method'] == 'PUT'
+        ):
 
-          
+            spots = Spot.objects.filter(lot_id=lot_id)
 
+            new_spot_number = len(spots) + 1
+
+            for spot in spots:
+                if spot.number == new_spot_number:
+                    new_spot_number += 1
+
+            new_spot = Spot.objects.create(
+              number = new_spot_number,
+              is_reserved = False,
+              lot_id = lot_id
+            )
+
+            return redirect(reverse('parkingapp:lot_details', args=[lot_id, user_id]))
+
+        
         lot = Lot.objects.get(pk=lot_id)
 
         """
@@ -61,11 +81,6 @@ def lot_details(request, lot_id, user_id):
 
         hours = int(form_data['num_of_hours'])
         current_time = datetime.now(tz=get_current_timezone())
-
-        test_time = get_current_timezone()
-        print('test time zone', test_time)
-        print('current time', current_time)
-
         hours_added = timedelta(hours=hours)
         exp_time = current_time + hours_added
 

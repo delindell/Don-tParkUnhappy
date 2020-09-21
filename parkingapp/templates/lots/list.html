@@ -2,42 +2,48 @@
 
 {% load static %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+{% endblock %}
+
 {% block content %}
+  <div class="lot-container" style="text-align: center;">
+    {% if user.is_superuser %}
+      <h1>Welcome Admin User!</h1>
+    {% endif %}
 
-  {% if user.is_superuser %}
-    <h1>Welcome Admin User!</h1>
-  {% endif %}
+    {% if not user.is_superuser %}
+      <h1>Welcome {{ user.first_name }} {{ user.last_name }}!</h1>
+    {% endif %}
 
-  {% if not user.is_superuser %}
-    <h1>Welcome {{ user.first_name }} {{ user.last_name }}!</h1>
-  {% endif %}
-
-  <h1>Our Lots</h1>
-  {% if user.is_superuser %}
-    <form action="{% url 'parkingapp:add_lot_form' %}" method="get">
-      {% csrf_token %}
-      <input type="submit" value="Add Lot">
-    </form>
-  {% endif %}  
-  <ol>
+    <h1>Our Lots</h1>
+    {% if user.is_superuser %}
+      <form action="{% url 'parkingapp:add_lot_form' %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Add Lot">
+      </form>
+    {% endif %}
+  </div>  
+  <div class="lots">
   {% for lot in all_lots %}
-    <li>
-      {{ lot.name }}
-      {{ lot.address }}
-      Hourly Rate ${{ lot.hourly_rate }}
+    <div class="lot">
+      <p>{{ lot.name }}</p>
+      <p>{{ lot.address }}</p>
+      <p><strong>Hourly Rate ${{ lot.hourly_rate }}</strong></p>
       {% if not user.is_superuser %}
         <a href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
       {% endif %}
       {% if user.is_superuser %}
-        <a href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
+        <a class="lot-button" href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
         <form action="{% url 'parkingapp:lot_list' %}" method="post">
           {% csrf_token %}
           <input type="hidden" name="lot_id" value="{{ lot.id }}">
           <input type="hidden" name="actual_method" value="DELETE">
           <input type="submit" value="Delete Lot">
         </form>
+        <a class="lot-button" href="{% url 'parkingapp:lot_update_form' lot.id %}">Update Lot</a>
       {% endif %}
-    </li>
+    </div>
   {% endfor %}
-  </ol>
+  </div>
 {% endblock content %}

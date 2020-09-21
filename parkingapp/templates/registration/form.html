@@ -1,35 +1,44 @@
 {% load static %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Parking App</title>
+    <title>Dont't Park Unhappy</title>
   </head>
   <body>
-    <h1>Register Account</h1>
-    <form action="{% url 'parkingapp:register' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-        <label for="username">Username: </label>
-        <input id="username" type="text" name="username" required>
-      </fieldset>
-      <fieldset>
-        <label for="first_name">First Name: </label>
-        <input id="first_name" type="text" name="first_name" required>
-      </fieldset>
-      <fieldset>
-        <label for="last_name">Last Name: </label>
-        <input id="last_name" type="text" name="last_name" required>
-      </fieldset>
-      <fieldset>
-        <label for="email">Email: </label>
-        <input id="email" type="email" name="email" required>
-      </fieldset>
-      <fieldset>
-        <label for="password">Password: </label>
-        <input id="password" type="password" name="password" required>
-      </fieldset>
-      <input type="submit" value="Register" />
-    </form>
+    <div class="register-containter" style="text-align: center;">
+      <h1>Register Account</h1>
+      <form action="{% url 'parkingapp:register' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+          <label for="username">Username: </label>
+          <input id="username" type="text" name="username" required>
+        </fieldset>
+        <fieldset>
+          <label for="first_name">First Name: </label>
+          <input id="first_name" type="text" name="first_name" required>
+        </fieldset>
+        <fieldset>
+          <label for="last_name">Last Name: </label>
+          <input id="last_name" type="text" name="last_name" required>
+        </fieldset>
+        <fieldset>
+          <label for="email">Email: </label>
+          <input id="email" type="email" name="email" required>
+        </fieldset>
+        <fieldset>
+          <label for="password">Password: </label>
+          <input id="password" type="password" name="password" required>
+        </fieldset>
+        <input type="submit" value="Register" />
+      </form>
+    </div>
   </body>
 </html>
