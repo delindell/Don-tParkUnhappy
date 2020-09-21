@@ -1,9 +1,29 @@
-{% block content %}
-    <h1 class="header">Don't Park Unhappy</h1>
-    <a href="{% url 'parkingapp:login' %}"><h2>Login</h2></a>
-    <h2>OR</h2>
-    <form action="{% url 'parkingapp:register' %}" method="get">
-      {% csrf_token %}
-      <input type="submit" value="Register">
-    </form>
-{% endblock content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<head>
+  <meta charset="utf-8">
+  <title>Don't Park Unhappy</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" />
+  {% endblock css %}
+</head>
+  <body>
+    <div class="home-containter" style="text-align: center;">
+      <h1 class="header">Don't Park Unhappy</h1>
+      <a href="{% url 'parkingapp:login' %}"><h2>Login</h2></a>
+      <h2>OR</h2>
+      <form action="{% url 'parkingapp:register' %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Register">
+      </form>
+    </div>
+  </body>
+</html>

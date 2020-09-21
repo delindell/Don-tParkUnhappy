@@ -20,8 +20,6 @@ def add_lot_form(request):
         new_lot = Lot.objects.create(
           name = form_data['name'],
           address = form_data['address'],
-          open_time = form_data['open_time'],
-          close_time = form_data['close_time'],
           hourly_rate = form_data['hourly_rate']
         )
 

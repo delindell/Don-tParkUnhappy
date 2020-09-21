@@ -12,6 +12,7 @@ urlpatterns = [
     path('lots/', lot_list, name='lot_list'),
     path('lots/<int:lot_id>/<int:user_id>', lot_details, name='lot_details'),
     path('lots/form/', add_lot_form, name='add_lot_form'),
+    path('lots/update_form/<int:lot_id>/', lot_update_form, name='lot_update_form'),
     path('account/<int:user_id>/', account_details, name='account_details'),
     path('account/form/<int:user_id>/', edit_account_details, name='edit_account_details'),
     path('paymenttypes/<int:user_id>/', payment_list, name='payment_list'),

@@ -16,3 +16,5 @@ def account_details(request, user_id):
         }
 
         return render(request, template, context)
+
+        

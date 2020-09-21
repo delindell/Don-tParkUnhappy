@@ -11,7 +11,7 @@
     {% for spot in all_spots %}
       {% if reservation.spot_id == spot.id %}
         {% if spot.is_reserved and current_time < reservation.res_end_time %}
-          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }} {{ reservation.vehicle.license_plate }}</li>
+          <li>Exipres: {{ reservation.res_end_time }} ${{ reservation.total_cost }} Spot# {{ reservation.spot.number }} Lot Name: {{ reservation.spot.lot.name }} Vehicle Plate: {{ reservation.vehicle.license_plate }}</li>
         {% endif %}
       {% endif %}
       {% endfor %}
@@ -23,7 +23,7 @@
     {% for spot in all_spots %}
       {% if reservation.spot_id == spot.id %}
         {% if not spot.is_reserved %}
-          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }}</li>
+          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }} {{ reservation.spot.number }} {{ reservation.spot.lot.name }} {{ reservation.vehicle.license_plate }}</li>
         {% endif %}
       {% endif %}
       {% endfor %}

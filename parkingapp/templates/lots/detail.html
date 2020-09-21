@@ -5,6 +5,14 @@
 {% block content %}
   <h1>{{ lot.name }}</h1>
   <div>
+    {% if user.is_superuser %}
+      <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="PUT">
+        <input type="submit" value="Add Spot">
+      </form>
+    {% endif %}
+  {% if not user.is_superuser %}
     {% for spot in lot.spots %}
       {% if not spot.is_reserved %}
         <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
@@ -33,5 +41,19 @@
         </form>
       {% endif %}
     {% endfor %}
+    {% endif %}
+    {% if user.is_superuser %}
+      {% for spot in lot.spots %}
+        {% if not spot.is_reserved %}
+        <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
+          {% csrf_token %}
+          <p style="list-style-type: none;">Spot #: {{ spot.number }}</p>
+          <input type="hidden" name="spot_id" value="{{ spot.id }}">
+          <input type="hidden" name="actual_method" value="DELETE">
+          <input type="submit" value="Delete Spot">
+        </form>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}
