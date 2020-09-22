@@ -2,6 +2,12 @@
 
 {% load static %}
 
+{% load bootstrap4 %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+{% endblock %}
+
 {% block content %}
   <h1>Update Lot</h1>
   <form action="{% url 'parkingapp:lot_update_form' lot.id %}" method="post">
@@ -19,6 +25,6 @@
       <input id="hourly_rate" type="hourly_rate" name="hourly_rate" value="{{ lot.hourly_rate }}" required>
     </fieldset>
     <input type="hidden" name="actual_method" value="PUT">
-    <input type="submit" value="Update Lot" />
+    <input class="btn btn-danger" type="submit" value="Update Lot" />
   </form>
 {% endblock %}

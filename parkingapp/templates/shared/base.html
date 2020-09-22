@@ -17,8 +17,8 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="/" class="nav__logo" ><img src="../static/styles/media/dont_park_unhappy/icon.png" alt="logo"></a>
-      <ul class="nav__links ml-1">
+      <a href="/" class="nav__logo"><img src="{% static '../static/styles/media/dont_park_unhappy_icon.jpg' %}" alt="logo"></a>
+      <ul class="nav__links ml-auto">
         <li class="nav__link"><a href="{% url 'parkingapp:lot_list' %}">Parking Lots</a></li>
         {% if not user.is_superuser %}
           <li class="nav__link"><a href="{% url 'parkingapp:account_details' user.id %}">Account</a></li>
