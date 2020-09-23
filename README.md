@@ -9,8 +9,8 @@ Don't Park Unhappy is an app developed for users(customers) and users(admin) ali
 1. Create a new directory in your terminal. Clone down this repository by clicking the "Clone or Download" button above, copying the SSH key, and running the following command in your terminal `git clone sshKeyGoesHere`
 2. `cd DontParkHappy`
 3. Create your OSX virtual environment in Terminal:
-- `python -m venv parkingappEnv`
-- `source ./parkingappEnv/bin/activate`
+    - `python -m venv parkingappEnv`
+    - `source ./parkingappEnv/bin/activate`
 - Or create your Windows virtual environment in Command Line:
     - `python -m venv parkingappEnv`
     - `source ./parkingappEnv/Scripts/activate`
@@ -27,6 +27,14 @@ Don't Park Unhappy is an app developed for users(customers) and users(admin) ali
 8. Fire up your dev server and have some fun!
 - `python manage.py runserver`
 
-## ERD
+### Built With
+* HTML
+* CSS
+* Django
+* Python
+* Bootstrap
+* SQL
 
-[Imgur](https://imgur.com/7Ofx3BY)
+### ERD
+
+![Imgur](./screenshots/capstone_erd.png)

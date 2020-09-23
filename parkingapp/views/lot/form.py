@@ -14,8 +14,12 @@ def add_lot_form(request):
 
         return render(request, template, context)
 
+       
+
     elif request.method == 'POST':
         form_data = request.POST
+
+        """Creating the new lot object and saving it to the database"""
 
         new_lot = Lot.objects.create(
           name = form_data['name'],
@@ -25,7 +29,8 @@ def add_lot_form(request):
 
         """
         Here we are getting the number of spots in the new lot
-        off of the form """
+        off of the form and converting that number into a list of individual numbers.
+        Then making a new spot object for each one of those numbers in the list """
 
         num_of_spots = int(form_data['number_of_spots'])
 

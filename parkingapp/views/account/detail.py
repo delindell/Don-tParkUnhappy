@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 
 @login_required
 def account_details(request, user_id):
+
+    """Upon request this function gets the logged in users information and
+    passes it to the template"""
+
     if request.method == 'GET':
 
         auth_user = User.objects.filter(pk=user_id)

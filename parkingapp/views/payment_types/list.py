@@ -31,5 +31,3 @@ def payment_list(request, user_id):
           payment.delete()
 
           return redirect(reverse('parkingapp:payment_list', args=[user_id]))
-
-        return redirect(reverse('parkingapp:payment_list', args=[user_id]))
