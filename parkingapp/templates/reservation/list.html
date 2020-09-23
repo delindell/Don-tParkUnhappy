@@ -5,28 +5,41 @@
 {% block content %}
 
   <h1>Our Reservations</h1>
+  <h2>Total Revenue: ${{ total_revenue }}</h2>
   <h2>Active Reservations</h2>
-  <ol>
+  <div class="active-reservations">
   {% for reservation in all_reservations %}
     {% for spot in all_spots %}
       {% if reservation.spot_id == spot.id %}
         {% if spot.is_reserved and current_time < reservation.res_end_time %}
-          <li>Exipres: {{ reservation.res_end_time }} ${{ reservation.total_cost }} Spot# {{ reservation.spot.number }} Lot Name: {{ reservation.spot.lot.name }} Vehicle Plate: {{ reservation.vehicle.license_plate }}</li>
+        <div class="active-reservation">
+          <p><strong>Exipres:</strong> {{ reservation.res_end_time }}</p>
+          <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
+          <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
+          <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
+          <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
+        </div>
         {% endif %}
       {% endif %}
       {% endfor %}
     {% endfor %}
-  </ol>
+  </div>
   <h2>Expired Reservations</h2>
-    <ol>
+  <div class="expired-reservations">
   {% for reservation in all_reservations %}
     {% for spot in all_spots %}
       {% if reservation.spot_id == spot.id %}
         {% if not spot.is_reserved %}
-          <li>{{ reservation.res_end_time }} ${{ reservation.total_cost }} {{ reservation.spot.number }} {{ reservation.spot.lot.name }} {{ reservation.vehicle.license_plate }}</li>
+        <div class="expired-reservation">
+          <p><strong>Exipred:</strong> {{ reservation.res_end_time }}</p>
+          <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
+          <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
+          <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
+          <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
+        </div>
         {% endif %}
       {% endif %}
       {% endfor %}
     {% endfor %}
-  </ol>
+    </div>
 {% endblock content %}

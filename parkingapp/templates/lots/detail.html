@@ -2,29 +2,38 @@
 
 {% load static %}
 
+{% load bootstrap4 %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+{% endblock %}
+
 {% block content %}
+<div class="lot-details-container" style="text-align: center;">
   <h1>{{ lot.name }}</h1>
   <div>
     {% if user.is_superuser %}
       <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="actual_method" value="PUT">
-        <input type="submit" value="Add Spot">
+        <input class="btn btn-danger mb-2" type="submit" value="Add Spot">
       </form>
     {% endif %}
   {% if not user.is_superuser %}
+  <div class="spots">
     {% for spot in lot.spots %}
+    <div class="spot">
       {% if not spot.is_reserved %}
         <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
           {% csrf_token %}
-          <p style="list-style-type: none;">Spot #: {{ spot.number }}</p>
-          <select id="payment" type="text" name="payment" required>
+          <p><strong>Spot # {{ spot.number }}</strong></p>
+          <select class="mb-2" id="payment" type="text" name="payment" required>
             <option value="">Select Payment</option>
             {% for payment in payments %}
               <option value="{{ payment.id }}">{{ payment.merchant_name }} {{ payment.expiration_date }}</option>
             {% endfor %}
           </select>
-          <select id="vehicle" type="text" name="vehicle" required>
+          <select class="mb-2" id="vehicle" type="text" name="vehicle" required>
             <option value="">Select vehicle</option>
             {% for vehicle in vehicles %}
               <option value="{{ vehicle.id }}">{{ vehicle.make }} {{ vehicle.model }}</option>
@@ -36,24 +45,37 @@
             <option value="3">3 Hours</option>
             <option value="5">5 Hours</option>
           </select>
+          <p>
           <input type="hidden" name="spot" value="{{ spot.id }}">
-          <input type="submit" value="Reserve">
+          <input class="btn btn-danger mt-2" type="submit" value="Reserve">
+          </p>
         </form>
+        {% else %}
+          <p><strong>Spot # {{ spot.number }}</strong></p>
+          <h4 class="mt-5"><strong>Spot is Reserved</strong></h4>
       {% endif %}
+    </div>
     {% endfor %}
+    </div>
     {% endif %}
     {% if user.is_superuser %}
+    <div class="admin-spots">
       {% for spot in lot.spots %}
+      <div class="admin-spot">
         {% if not spot.is_reserved %}
         <form action="{% url 'parkingapp:lot_details' lot.id user.id %}" method="post">
           {% csrf_token %}
-          <p style="list-style-type: none;">Spot #: {{ spot.number }}</p>
+          <p style="list-style-type: none;"><strong>Spot # {{ spot.number }}</strong></p>
           <input type="hidden" name="spot_id" value="{{ spot.id }}">
           <input type="hidden" name="actual_method" value="DELETE">
-          <input type="submit" value="Delete Spot">
+          <input class="btn btn-danger" type="submit" value="Delete Spot">
         </form>
+        {% else %}
+          <p><strong>Spot # {{ spot.number }}</strong></p>
+          <h4><strong>Spot is Reserved</strong></h4>
         {% endif %}
+        </div>
       {% endfor %}
+      </div>
     {% endif %}
-  </div>
 {% endblock %}

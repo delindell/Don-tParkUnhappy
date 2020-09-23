@@ -7,11 +7,11 @@
 
 
 {% block content %}
-  <h1  style="text-align: center;">{{user.first_name}}'s Payment Types</h1> 
+  <h1  style="text-align: center;">{{user.first_name}}'s Payments</h1> 
   {% if user.is_authenticated %}
     <form style="text-align: center;" action="{% url 'parkingapp:payment_form' user.id %}" method="get">
       {% csrf_token %}
-      <input class="add-payment" type="submit" value="Add Payment">
+      <input class="btn btn-danger" type="submit" value="Add Payment">
     </form> 
     <div class="payments">
     {% for payment in payment_types %}
@@ -25,11 +25,11 @@
           {% csrf_token %}
           <input type="hidden" name="payment_id" value="{{ payment.id }}">
           <input type="hidden" name="actual_method" value="DELETE">
-          <input type="submit" value="Delete Payment">
+          <input class="btn btn-danger" type="submit" value="Delete Payment">
         </form>
       </div>
       {% endfor %}
       </div>
     {% endif %}
 {% endblock %}
-<strong></strong>
+

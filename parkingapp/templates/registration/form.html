@@ -1,44 +1,52 @@
 {% load static %}
-
+<!DOCTYPE html>
+<html>
 {# Load the tag library #}
 {% load bootstrap4 %}
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-<!DOCTYPE html>
-<html>
+
   <head>
     <meta charset="utf-8">
-    <title>Dont't Park Unhappy</title>
+    <title>Don't Park Unhappy</title>
+    {% block css %}
+      <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" />
+    {% endblock css %}
   </head>
   <body>
-    <div class="register-containter" style="text-align: center;">
+    <div class="register-containter mt-3" style="text-align: center;">
       <h1>Register Account</h1>
       <form action="{% url 'parkingapp:register' %}" method="post">
         {% csrf_token %}
         <fieldset>
-          <label for="username">Username: </label>
+          <label for="username"><strong>Username:</strong> </label>
           <input id="username" type="text" name="username" required>
         </fieldset>
         <fieldset>
-          <label for="first_name">First Name: </label>
+          <label for="first_name"><strong>First Name:</strong> </label>
           <input id="first_name" type="text" name="first_name" required>
         </fieldset>
         <fieldset>
-          <label for="last_name">Last Name: </label>
+          <label for="last_name"><strong>Last Name:</strong> </label>
           <input id="last_name" type="text" name="last_name" required>
         </fieldset>
         <fieldset>
-          <label for="email">Email: </label>
+          <label for="email"><strong>Email:</strong> </label>
           <input id="email" type="email" name="email" required>
         </fieldset>
         <fieldset>
-          <label for="password">Password: </label>
+          <label for="password"><strong>Password:</strong> </label>
           <input id="password" type="password" name="password" required>
         </fieldset>
-        <input type="submit" value="Register" />
+        <input class="btn btn-danger" type="submit" value="Register" />
       </form>
+      <img src="{% static '../static/styles/media/dont_park_unhappy_icon.jpg' %}" alt="logo">
     </div>
+    <footer class="footer" style="text-align: center;">
+      <p>Don't Park Uphappy &copy; 2020</p>
+      <p>Call 615-555-1324 For Boot Removal</p>
+    </footer>
   </body>
 </html>

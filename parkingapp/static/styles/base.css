@@ -1,6 +1,6 @@
 /* Nav */
 .nav {
-  display: flex;
+  /* display: flex; */
 }
 
 .nav__logo {
@@ -12,32 +12,41 @@
   background-repeat: no-repeat;
 }
 
-.nav__logo {
-  width: 125px;
-  height: 125px;
-  margin: 1% 0 1% 6%;
+.nav__logo img {
+  width: 200px;
+  height: 200px;
+  margin: 0 1%;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .nav__links {
-  flex-grow: 3;
-  justify-content: right;
+  flex-grow: 2;
+  /* justify-content: right; */
   align-items: center;
   padding: 0;
   display: flex;
   list-style: none;
 }
+
 .nav__links a {
+  background-color: rgb(226, 67, 67);
+  color: white;
+  padding: 1em 1.5em;
   text-decoration: none;
+  border-radius: 10%;
 }
+
 .nav__links a:hover {
-  border-bottom: .1em solid blue;
-  text-decoration: none;
+  border: .1em solid rgb(226, 67, 67);
+  padding: 1em 1.5em;
+  background-color: #add8e6;
+  color: rgb(226, 67, 67);
+  text-decoration: underline;
 }
-.nav__links a:visited {
+/* .nav__links a:visited {
   color: inherit;
-}
+} */
 
 .nav__link {
   padding-right: 3%;
@@ -56,7 +65,26 @@
   text-align: center;
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid gray;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+/* vehicles */
+
+.vehicles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.vehicle {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
 }
@@ -73,12 +101,114 @@
   text-align: center;
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid gray;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
 }
 
-.lot-button a {
-  text-decoration: none;
-  margin: 1%;
+/* spots */
+
+.spots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.spot {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+.admin-spots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.admin-spot {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+/* active reservations */
+
+.active-reservations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.active-reservation {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+/* expired reservations */
+
+.expired-reservations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.expired-reservation {
+  text-align: center;
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid rgb(226, 67, 67);
+  border-radius: 10%;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+/* confirmation page */
+
+.confirmation-container {
+  margin-top: 50px;
+}
+
+/* button hover */
+
+.btn:hover {
+  border: .1em solid rgb(226, 67, 67);
+  background-color: #add8e6;
+  color: rgb(226, 67, 67);
+  text-decoration: underline;
+}
+
+/* footer */
+
+body {
+  background-color: #add8e6;
+  text-align: center;
+  min-height: 100vh; /* will cover the 100% of viewport */
+  /* overflow: hidden; */
+  display: block;
+  position: relative;
+  padding-bottom: 100px; /* height of your footer */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bolder;
 }

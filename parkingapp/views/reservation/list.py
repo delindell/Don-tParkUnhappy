@@ -17,13 +17,18 @@ def reservation_list(request):
 
         current_time = datetime.now(tz=get_current_timezone())
 
+        total_revenue = 0
+
+        for reservation in all_reservations:
+            total_revenue += int(reservation.total_cost)
 
         template = 'reservation/list.html'
 
         context = {
           'all_reservations': all_reservations,
           'all_spots': all_spots,
-          'current_time': current_time
+          'current_time': current_time,
+          'total_revenue': total_revenue
         }
 
         return render(request, template, context)

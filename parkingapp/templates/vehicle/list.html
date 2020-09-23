@@ -7,21 +7,23 @@
   {% if user.is_authenticated %}
     <form action="{% url 'parkingapp:vehicle_form' user.id %}" method="get">
       {% csrf_token %}
-      <input type="submit" value="Add Vehicle">
+      <input class="btn btn-danger mb-2" type="submit" value="Add Vehicle">
     </form> 
   {% endif %}
+  <div class="vehicles">
   {% for vehicle in vehicles %}
-    <div class="vehicle-container">
-      <p>Make: {{ vehicle.make }}</p>
-      <p>Model: {{ vehicle.model }}</p>
-      <p>Color: {{ vehicle.color }}</p>
-      <p>Plate Number: {{ vehicle.license_plate }}</p>
+    <div class="vehicle">
+      <p><strong>Make:</strong> {{ vehicle.make }}</p>
+      <p><strong>Model:</strong> {{ vehicle.model }}</p>
+      <p><strong>Color:</strong> {{ vehicle.color }}</p>
+      <p><strong>Plate Number:</strong> {{ vehicle.license_plate }}</p>
       <form action="{% url 'parkingapp:vehicle_list' user.id  %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
         <input type="hidden" name="actual_method" value="DELETE">
-        <input type="submit" value="Delete Vehicle">
+        <input class="btn btn-danger" type="submit" value="Delete Vehicle">
       </form>
+    </div>
     </div>
   {% endfor %}
 {% endblock %}

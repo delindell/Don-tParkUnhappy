@@ -1,4 +1,12 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
 {% block content %}
   <div class="account-containter" style="text-align: center;">
@@ -6,9 +14,9 @@
     {% for user in auth_user %}
       <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
-      <a href="{% url 'parkingapp:vehicle_list' user.id %}">View Vehicles</a>
-      <a href="{% url 'parkingapp:payment_list' user.id %}">View Payments</a>
-      <a href="{% url 'parkingapp:edit_account_details' user.id %}">Edit Profile</a>
+      <a class="btn btn-danger mr-2" href="{% url 'parkingapp:vehicle_list' user.id %}">View Vehicles</a>
+      <a class="btn btn-danger mr-2" href="{% url 'parkingapp:payment_list' user.id %}">View Payments</a>
+      <a class="btn btn-danger" href="{% url 'parkingapp:edit_account_details' user.id %}">Edit Profile</a>
     {% endfor %}
   </div>
 {% endblock %}
