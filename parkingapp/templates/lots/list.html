@@ -33,17 +33,17 @@
       <p><strong>{{ lot.address }}</strong></p>
       <p><strong>Hourly Rate ${{ lot.hourly_rate }}</strong></p>
       {% if not user.is_superuser %}
-        <a  class="btn btn-primary" href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
+        <a  class="btn" href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
       {% endif %}
       {% if user.is_superuser %}
-        <a class="btn btn-primary" href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
+        <a class="btn" href="{% url 'parkingapp:lot_details' lot.id user.id %}">View Spots</a>
         <form action="{% url 'parkingapp:lot_list' %}" method="post">
           {% csrf_token %}
           <input type="hidden" name="lot_id" value="{{ lot.id }}">
           <input type="hidden" name="actual_method" value="DELETE">
-          <input class="btn btn-primary mt-2" type="submit" value="Delete Lot">
+          <input class="btn mt-2" type="submit" value="Delete Lot">
         </form>
-        <a class="btn btn-primary mt-2" href="{% url 'parkingapp:lot_update_form' lot.id %}">Update Lot</a>
+        <a class="btn mt-2" href="{% url 'parkingapp:lot_update_form' lot.id %}">Update Lot</a>
       {% endif %}
     </div>
   {% endfor %}

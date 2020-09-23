@@ -9,22 +9,22 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Update Lot</h1>
+  <h1 class="mb-3">Update Lot</h1>
   <form action="{% url 'parkingapp:lot_update_form' lot.id %}" method="post">
     {% csrf_token %}
     <fieldset>
-      <label for="name">Name: </label>
+      <label for="name"><strong>Name: </strong></label>
       <input id="name" type="text" name="name" value="{{ lot.name }}" required>
     </fieldset>
     <fieldset>
-      <label for="address">Address: </label>
+      <label for="address"><strong>Address: </strong></label>
       <input id="address" type="text" name="address" value="{{ lot.address }}" required>
     </fieldset>
     <fieldset>
-      <label for="hourly_rate">Hourly Rate: </label>
+      <label for="hourly_rate"><strong>Hourly Rate: </strong></label>
       <input id="hourly_rate" type="hourly_rate" name="hourly_rate" value="{{ lot.hourly_rate }}" required>
     </fieldset>
     <input type="hidden" name="actual_method" value="PUT">
-    <input class="btn btn-danger" type="submit" value="Update Lot" />
+    <input class="btn btn-danger mt-3" type="submit" value="Update Lot" />
   </form>
 {% endblock %}
