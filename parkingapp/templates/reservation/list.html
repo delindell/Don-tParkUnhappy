@@ -31,7 +31,7 @@
       {% if reservation.spot_id == spot.id %}
         {% if not spot.is_reserved %}
         <div class="expired-reservation">
-          <p><strong>Exipres:</strong> {{ reservation.res_end_time }}</p>
+          <p><strong>Exipred:</strong> {{ reservation.res_end_time }}</p>
           <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
           <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
           <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
