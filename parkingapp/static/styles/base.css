@@ -63,9 +63,11 @@
 
 .payment {
   text-align: center;
+  background-color: rgb(226, 67, 67);
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid rgb(226, 67, 67);
+  border: 1px solid white;
+  color: white;
   border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
@@ -81,9 +83,11 @@
 
 .vehicle {
   text-align: center;
+  background-color: rgb(226, 67, 67);
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid rgb(226, 67, 67);
+  border: 1px solid white;
+  color: white;
   border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
@@ -119,9 +123,11 @@
 
 .spot {
   text-align: center;
+  background-color: rgb(226, 67, 67);
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid rgb(226, 67, 67);
+  border: 1px solid white;
+  color: white;
   border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
@@ -135,9 +141,11 @@
 
 .admin-spot {
   text-align: center;
+  background-color: rgb(226, 67, 67);
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
-  border: 1px solid rgb(226, 67, 67);
+  border: 1px solid white;
+  color: white;
   border-radius: 10%;
   margin: 1em;
   padding: 1.5em;
@@ -190,6 +198,12 @@
 }
 
 /* button hover */
+
+.btn {
+  color:white;
+  border: .1em solid #add8e6;
+
+}
 
 .btn:hover {
   border: .1em solid rgb(226, 67, 67);
