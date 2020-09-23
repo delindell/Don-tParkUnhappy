@@ -28,3 +28,5 @@ Don't Park Unhappy is an app developed for users(customers) and users(admin) ali
 - `python manage.py runserver`
 
 ## ERD
+
+[Imgur](https://imgur.com/7Ofx3BY)
