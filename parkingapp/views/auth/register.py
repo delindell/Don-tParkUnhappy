@@ -11,6 +11,9 @@ def register_form(request):
         return render(request, template, context)
 
     elif request.method == 'POST':
+
+        """Creating a new user object in the DB"""
+
         form_data = request.POST
 
         new_user = User.objects.create_user(
@@ -20,6 +23,8 @@ def register_form(request):
             first_name = form_data['first_name'],
             last_name = form_data['last_name']
         )
+
+        """Logging in the user on completition of registration"""
 
         authenticated_user = authenticate(username=form_data['username'], password=form_data['password'])
 

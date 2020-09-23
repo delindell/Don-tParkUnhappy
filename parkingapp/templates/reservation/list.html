@@ -2,44 +2,46 @@
 
 {% load static %}
 
+{% load bootstrap4 %}
+
 {% block content %}
 
   <h1>Our Reservations</h1>
-  <h2>Total Revenue: ${{ total_revenue }}</h2>
+  <h2 class="m-3">Total Revenue: ${{ total_revenue }}</h2>
   <h2>Active Reservations</h2>
   <div class="active-reservations">
-  {% for reservation in all_reservations %}
-    {% for spot in all_spots %}
-      {% if reservation.spot_id == spot.id %}
-        {% if spot.is_reserved and current_time < reservation.res_end_time %}
-        <div class="active-reservation">
-          <p><strong>Exipres:</strong> {{ reservation.res_end_time }}</p>
-          <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
-          <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
-          <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
-          <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
-        </div>
+    {% for reservation in all_reservations %}
+      {% for spot in all_spots %}
+        {% if reservation.spot_id == spot.id %}
+          {% if spot.is_reserved and current_time < reservation.res_end_time %}
+            <div class="active-reservation">
+              <p><strong>Exipres:</strong> {{ reservation.res_end_time }}</p>
+              <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
+              <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
+              <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
+              <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
+            </div>
+          {% endif %}
         {% endif %}
-      {% endif %}
       {% endfor %}
     {% endfor %}
   </div>
   <h2>Expired Reservations</h2>
   <div class="expired-reservations">
-  {% for reservation in all_reservations %}
-    {% for spot in all_spots %}
-      {% if reservation.spot_id == spot.id %}
-        {% if not spot.is_reserved %}
-        <div class="expired-reservation">
-          <p><strong>Exipred:</strong> {{ reservation.res_end_time }}</p>
-          <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
-          <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
-          <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
-          <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
-        </div>
+    {% for reservation in all_reservations %}
+      {% for spot in all_spots %}
+        {% if reservation.spot_id == spot.id %}
+          {% if not spot.is_reserved %}
+            <div class="expired-reservation">
+              <p><strong>Exipred:</strong> {{ reservation.res_end_time }}</p>
+              <p><strong>Reservation Total</strong> ${{ reservation.total_cost }}</p>
+              <p><strong>Lot Name:</strong> {{ reservation.spot.lot.name }}</p> 
+              <p><strong>Spot#</strong> {{ reservation.spot.number }}</p>
+              <p><strong>Vehicle Plate:</strong> {{ reservation.vehicle.license_plate }}</p>
+            </div>
+          {% endif %}
         {% endif %}
-      {% endif %}
       {% endfor %}
     {% endfor %}
-    </div>
+  </div>
 {% endblock content %}
