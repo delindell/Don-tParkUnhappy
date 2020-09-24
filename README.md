@@ -38,3 +38,7 @@ Don't Park Unhappy is an app developed for users(customers) and users(admin) ali
 ### ERD
 
 ![Imgur](./screenshots/capstone_erd.png)
+
+### Screenshots (for your viewing pleasure)
+
+![]
