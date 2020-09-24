@@ -161,7 +161,7 @@
 
 .active-reservation {
   text-align: center;
-  background-color: rgb(226, 67, 67);
+  background-color: rgb(23, 129, 23);
   flex-basis: 20%;
   padding: 0 2em 0.5em 2em;
   border: 1px solid white;
