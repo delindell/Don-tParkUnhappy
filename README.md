@@ -37,8 +37,27 @@ Don't Park Unhappy is an app developed for users(customers) and users(admin) ali
 
 ### ERD
 
-![Imgur](./screenshots/capstone_erd.png)
+![ERD](./screenshots/capstone_erd.png)
 
-### Screenshots (for your viewing pleasure)
+### Screenshots (for your viewing pleasure!)
 
-![]
+##### Admin Active Reservations View
+
+![ActiveReservations](./screenshots/active_reservations.png)
+
+##### Admin Expired Reservations View
+
+![ExpiredReservations](./screenshots/expired_reservations.png)
+
+##### Customer Lot View
+
+![Customer Lot View](./screenshots/lot_view_user.png)
+
+##### Customer Lot Detail View
+
+![Customer Lot Detail View](./screenshots/lot_details_user.png)
+
+
+### Acknowledgements
+
+I would personally like to thank all of my instructors and classmates, not only in Cohort 40, but in the Evening Cohort 11 as well, for helping to guide me on this arduous journey through Nashville Software School. I have met so many amazing, smart, talented indiviuals throughout this process that I can now call friends. Whilst this was personal effort undertaken by myself, I could not have done without your constant support and guidance. And for that I will be forever grateful.
